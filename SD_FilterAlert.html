@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+  </head>
+  <body>
+    <h2>Select your filter type:</h2>
+    <br>
+    <h2>Filter by location:</h2>
+    <input type="button" value="Location" onclick="runFilter('Location')"/>
+    <h2>Filter by event title:</h2>
+    <input type="button" value="Title" onclick="runFilter('Title')"/>
+    <script>
+      function runFilter(type) {
+        google.script.run.filter(type)
+        google.script.host.close()
+      }
+    </script>
+  </body>
+</html>

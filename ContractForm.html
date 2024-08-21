@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+</head>
+
+<body>
+  <form>
+    <label for="name">Customer Name:</label><br>
+    <input id="name" type="text" style="width: 50%;border-radius: 10px;margin-bottom: 15px;"/><br>
+    <label for="locID">Location ID:</label><br>
+    <input id="locID" type="number" style="width: 50%;border-radius: 10px;margin-bottom: 15px;"/><br>
+    <label for="contract-date">Contract Expiration Date:</label><br>
+    <input id="contract-date" type="date" style="width: 50%;border-radius: 10px;margin-bottom: 15px;"/><br>
+    <label for="contract-type">Contract Type:</label><br>
+    <select name="contract-type" id="type" style="border-radius: 10px;">
+  <option value="Maintenance">Maintenance</option>
+  <option value="Project">Project</option>
+  <option value="Other">Other</option>
+</select><br><br>
+    <label>Contract Status:</label><br>
+    <select name="contract-status" id="status" style="border-radius: 10px;">
+  <option value="Signed contract on file">Signed</option>
+  <option value="New contract pending">Pending</option>
+  <option value="No Signed Contract on file">Not Signed</option>
+  <option value="Expired">Expired</option>
+</select><br><br>
+    <button onclick="gatherData()" style="border-radius: 10px;">Add Contract</button>
+  </form>
+  <script>
+    // const defaultLoc = google.script.run.withSuccessHandler().getNextLocation()
+    // document.getElementById('locID').value = defaultLoc
+    function gatherData() {
+    const customer = {
+      name: document.getElementById("name").value,
+      loc: document.getElementById("locID").value,
+      date: document.getElementById("contract-date").value,
+      status: document.getElementById("status").value,
+      type: document.getElementById("type").value
+      }
+    
+    
+    google.script.run.withSuccessHandler().addNewContract(customer)
+    google.script.host.close()
+  }
+
+  </script>
+</body>
+
+</html>
